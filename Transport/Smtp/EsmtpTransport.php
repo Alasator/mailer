@@ -134,11 +134,11 @@ class EsmtpTransport extends SmtpTransport
         // if you think that the ! should be removed, read the code again
         // if doing so "fixes" your issue then it probably means your SMTP server behaves incorrectly or is wrongly configured
         if (!$stream->isTLS() && \defined('OPENSSL_VERSION_NUMBER') && \array_key_exists('STARTTLS', $this->capabilities)) {
-            /*$this->executeCommand("STARTTLS\r\n", [220]);
+            $this->executeCommand("STARTTLS\r\n", [220]);
 
             if (!$stream->startTLS()) {
                 throw new TransportException('Unable to connect with STARTTLS.');
-            }*/
+            }
 
             $response = $this->executeCommand(sprintf("EHLO %s\r\n", $this->getLocalDomain()), [250]);
             $this->capabilities = $this->parseCapabilities($response);
