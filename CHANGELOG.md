@@ -82,3 +82,4 @@ CHANGELOG
 -----
 
  * Added the component.
+test
